@@ -4,28 +4,34 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 import IndexScreen from './src/screens/IndexScreen';
-
+import { BlogProvider } from './src/context/BlogContext';
 const Stack = createStackNavigator();
 
-function MyStack(){
-  return(
+function MyStack() {
+  return (
     <Stack.Navigator>
       <Stack.Screen
         name='Index'
         component={IndexScreen}
+        options={{ title: 'Blogs' }}
       />
     </Stack.Navigator>
   )
 }
 
-
-export default function App() {
+const App = function () {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
   );
+}
+export default ()=>{
+  return (
+    <BlogProvider>
+      <App/>
+    </BlogProvider>
+  )
 }
 
 const styles = StyleSheet.create({
