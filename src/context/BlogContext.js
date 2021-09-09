@@ -10,7 +10,18 @@ const noteReducer = function(state,action){
     let temp=[...state]
     if(action.type==='add_note'){
 
-        return [...temp,{title:'Note nb.' + (temp.length+1)}]
+        return [...temp,
+            {
+                id:Math.floor(Math.random()*99999),
+                title:'Note nb.' + (temp.length+1)
+            }]
+    }
+    else if(action.type==='delete_note'){
+
+        console.log('Delete button pressed!')
+        delete temp[action.id]
+        return temp
+
     }
     else{
         return temp
@@ -25,9 +36,12 @@ export const BlogProvider = ({children})=>{
     function actionNotePost(action){
         dispatch({type:action})
     }
+    function deleteActionNotePost(action,idPost){
+        dispatch({type:action,id:idPost})
+    }
 
     return (
-        <BlogContext.Provider value={{data:notePost,actionNotePost}}>
+        <BlogContext.Provider value={{data:notePost,actionNotePost,deleteActionNotePost}}>
             {children}
         </BlogContext.Provider>
     )

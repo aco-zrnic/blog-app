@@ -13,7 +13,7 @@ function MyStack() {
       <Stack.Screen
         name='Index'
         component={IndexScreen}
-        options={{ title: 'Blogs' }}
+        options={{ title: 'Notes' }}
       />
     </Stack.Navigator>
   )
