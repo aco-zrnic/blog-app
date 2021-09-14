@@ -19,8 +19,9 @@ const noteReducer = function(state,action){
     else if(action.type==='delete_note'){
 
         console.log('Delete button pressed!')
-        delete temp[action.id]
-        return temp
+        return temp.filter((element)=>{
+            return element.id !== action.id
+        })
 
     }
     else{
