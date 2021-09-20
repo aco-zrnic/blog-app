@@ -10,11 +10,7 @@ const noteReducer = function(state,action){
     let temp=[...state]
     if(action.type==='add_note'){
 
-        return [...temp,
-            {
-                id:Math.floor(Math.random()*99999),
-                title:'Note nb.' + (temp.length+1)
-            }]
+        return [...temp, action.note ]
     }
     else if(action.type==='delete_note'){
 
@@ -34,8 +30,8 @@ export const BlogProvider = ({children})=>{
 
     const [notePost,dispatch] = useReducer(noteReducer,[])
 
-    function actionNotePost(action){
-        dispatch({type:action})
+    function actionNotePost(action,note){
+        dispatch({type:action, note})
     }
     function deleteActionNotePost(action,idPost){
         dispatch({type:action,id:idPost})
