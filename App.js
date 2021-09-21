@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +7,7 @@ import ShowScreen from './src/screens/ShowScreen';
 import { BlogProvider } from './src/context/BlogContext';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
+import ShowNoteScreen from './src/screens/ShowNoteScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +34,11 @@ function MyStack() {
         name='Creat'
         component={ShowScreen}
         options={{ title: 'Creat Note' }}
+      />
+      <Stack.Screen
+        name='ShowNote'
+        component={ShowNoteScreen}
+        options={{ title: 'Note' }}
       />
     </Stack.Navigator>
   )
